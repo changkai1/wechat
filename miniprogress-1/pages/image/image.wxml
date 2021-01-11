@@ -1,0 +1,17 @@
+<!--pages/image/image.wxml-->
+
+<!-- 1.image 默认大小 320*240-->
+<image src="/assets/test/dog.jpg" />
+
+<!-- 2.相册中的图片 -->
+<button bindtap="handleChooseAlbum">选中图片</button>
+<image src="{{imagePath}}" />
+
+<!-- 3.bindload 当图片载入完毕时触发-->
+<!-- 4.lazy-load 图片懒加载-->
+<!-- 5.show-menu-by-longpress 开启长按图片显示识别小程序码菜单-->
+<image src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" 
+       bindload="handleImageLoad"
+       lazy-load
+       show-menu-by-longpress
+       wx:for="{{10}}"/>

@@ -1,0 +1,82 @@
+<!--pages/wxs/wxs.wxml-->
+
+<!-- 1.wxs的定义方式,直接定义在wxml里面 -->
+<wxs module="info">
+    var message = "hellow world";
+    function sum (num1, num2) {
+        return num1 + num2;
+    }
+
+    // common.js的模块化导出
+    module.exports = {
+        message: message,
+        sum: sum
+    }
+</wxs>
+<view>{{info.message}}</view>
+<view>{{info.sum(20, 30)}}</view>
+
+<!-- 2.wxs 定义在单独的wxs文件中，在使用wxs标签导入 -->
+<!-- 不能使用绝对路径,必须使用相对路径引入 -->
+<wxs src="../../wxs/info.wxs" module="msg"></wxs>
+<view>{{msg.name}}</view>
+<view>{{msg.age}}</view>
+<view>{{msg.sum(3, 5)}}</view>
+
+<!-- 3.事件参数传递 -->
+<view class="container">
+    <block wx:for="{{titles}}" 
+           wx:key="{{index}}">
+        <view class="item"
+              bindtap="handlerItemClick"
+              data-index="{{index}}"
+              data-item="{{item}}">
+              {{item}}
+        </view>
+    </block>
+</view>
+
+<!-- 1.bindtap  事件冒泡 
+       catchtap 阻止事件传递
+-->
+<view class="box1" bindtap="handleBox1">
+    <view class="box2" bindtap="handleBox2">
+        <view class="box3" catchtap="handleBox3"></view>
+    </view>
+</view>
+
+<!-- 2.capture-bind:tap 事件捕获
+       capture-catch:tap 阻止事件传递
+-->
+<view class="box4" capture-catch:tap="handleBox4">
+    <view class="box5" capture-bind:tap="handleBox5">
+        <view class="box6" capture-bind:tap="handleBox6"></view>
+    </view>
+</view>
+
+<!-- 3.使用组件 需要在wxs.json里注册 -->
+<my-cpn></my-cpn>
+
+<!-- 4.自定义组件样式是否会互相影响 
+      4.1 默认情况下，自定义组件的样式不会影响
+      4.2 如果需要自定义组件的样式影响当前页面的样式，主要在自定义组件的js文件中设置options属性
+-->
+<view class="title">页面样式class名为title</view>
+
+<!-- 5.组件通信 接收组件传递过来的事件-->
+<my-prop bind:increment="handleIncrement" title="哈哈哈" titleclass="red"></my-prop>
+<my-prop title="呵呵呵" titleclass="green"></my-prop>
+<my-prop title="嘻嘻嘻" titleclass="blue"></my-prop>
+
+<view bind:tap>当前计数：{{count}}</view>
+
+<view>-----------------------------------------</view>
+
+<!-- 多插槽的使用,在组件标签内部使用插槽 
+    需要在组件 my-slot.js中配置
+-->
+<my-slot>
+    <text slot="slot1">slot1</text>
+    <text slot="slot2">slot2</text>
+    <text slot="slot3">slot3</text>
+</my-slot>

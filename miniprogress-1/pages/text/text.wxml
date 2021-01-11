@@ -1,0 +1,18 @@
+<!--pages/text/text.wxml-->
+<!-- text组件相当于span标签，属于行内元素 -->
+<!-- 1.基本使用 -->
+<text>Hellow World\n</text> 
+
+<!-- 2.selectable属性 文本是否可选-->
+<text selectable>selectable</text>
+
+<!-- 3.spaces属性 决定文本空格的大小 -->
+<!-- ensp: 半个中文字符的大小 -->
+<!-- emsp: 一 个中文字符的大小 -->
+<text>Hellow World\n</text>
+<text space="nbsp">Hellow World\n</text>
+<text space="ensp">Hellow World\n</text>
+<text space="emsp">Hellow World\n</text>
+
+<!-- 4、decode属性 是否解码文本 -->
+<text decode>5 &gt; 3</text>

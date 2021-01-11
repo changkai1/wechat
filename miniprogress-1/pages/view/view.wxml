@@ -1,0 +1,25 @@
+<!--pages/view/view.wxml-->
+<view>pages/view/view.wxml</view>
+
+<!-- view相当于html的div -->
+
+<!-- 1.hover-class 指定按下去的样式类。-->
+<!-- 2.hover-stay-time 手指松开后点击态保留时间 -->
+<!-- 3.hover-start-time 按住后多久出现点击态 -->
+<!-- 4.hover-stop-propagation 阻止冒泡 -->
+<view class="box1"
+      hover-class="hover-box1"
+      hover-stay-time="100"
+      hover-start-time="50">
+    <view class="box" 
+        hover-class="hover-box"
+        hover-stay-time="100"
+        hover-start-time="50"
+        hover-stop-propagation>
+        哈哈哈
+    </view>
+</view>
+
+
+
+

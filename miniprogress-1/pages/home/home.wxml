@@ -1,0 +1,19 @@
+<!--pages/home/home.wxml-->
+<!-- 小程序的数据绑定 -->
+<view>Hellow {{name}}</view>
+
+<!-- wx:for 循环 -->
+<view wx:for="{{students}}">{{item.name}}--{{item.age}}</view>
+
+<!-- 点击事件  bindtap -->
+<view>计数器：{{counter}}</view>
+<button size="mini" bindtap="handerBtnAdd">+</button>
+<button size="mini" bindtap="handerBtnSub">-</button>
+
+<!-- 获取用户信息 -->
+<button size="mini"
+        open-type="getUserInfo"
+        bindgetuserinfo="handleGetUserInfo">获取授权</button>
+
+<!-- 展示用户信息 -->
+<open-data type="userNickName"></open-data>

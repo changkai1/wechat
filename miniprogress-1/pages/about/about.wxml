@@ -1,0 +1,47 @@
+<!--pages/about/about.wxml-->
+
+<!-- 指令练习 -->
+<!-- 1.条件判断
+
+     1. wx:if 
+     2. wx:elif
+     3. wx:else
+-->
+<button size="mini" bindtap="handleBtn">显示隐藏</button>
+<view wx:if="{{isShow}}">显示隐藏</view>
+
+<view wx:if="{{score >= 90}}">优秀</view>
+<view wx:elif="{{score >= 70}}">良好</view>
+<view wx:else>不及格</view>
+
+<!-- 2. hidden 属性 false: 不隐藏  true: 隐藏-->
+<view hidden="{{false}}">通过hidden属性隐藏</view>
+<view hidden="{{true}}">通过hidden属性隐藏</view>
+
+<!-- 3. wx:for 循环 -->
+<view wx:for="{{movies}}" wx:key="{{index}}">{{item}}--{{index}}</view>
+<!-- 3.1 wx:for 变量 item,index 起别名 -->
+<view wx:for="{{movies}}" 
+      wx:for-item="movie" 
+      wx:for-index="i"
+      wx:key="{{movie}}">{{movie}}--{{i}}</view>
+
+<!-- 4. 代码复用使用：template -->
+<!-- import导入模板 -->
+<import src="/common/template.wxml" />
+<!-- is:使用哪个模板  data: 传值 -->
+<template is="contentItem" data="{{btnText: '按钮', content: '按钮哈哈哈' }}"/>
+
+<!-- 5.include 导入-->
+<include src="/common/header.wxml" />
+
+<!-- 
+    6.总结
+    import 导入：
+        1.主要导入template
+        2.特点：不能进行递归导入
+    include 导入：
+        1.将公共的wxml中的组件抽取到一个文件中
+        2.特点：不能导入template,可以进行递归导入
+
+ -->

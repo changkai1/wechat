@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+      "my-slot": "/components/my-slot/my-slot",
+      "my-cpn": "/components/my-cpn/my-cpn",
+      "my-prop": "/components/my-prop/my-prop"
+  }
+}
